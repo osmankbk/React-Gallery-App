@@ -2,7 +2,7 @@ import React from 'react';
 
 const Navigation = (props) => {
   return(
-    <nav class="main-nav">
+    <nav className="main-nav">
       <ul>
         <li><a href='#'>Cats</a></li>
         <li><a href='#'>Dogs</a></li>
