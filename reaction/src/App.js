@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import {
+  BrowserRouter,
+  Route
+} from 'react-router-dom';
 import Search from './Search';
 import Navigation from './Navigation';
 import PhotoContainer from './PhotoContainer';
@@ -10,7 +14,7 @@ class App extends Component {
     images: []
   }
   /*componentDidMount() {
-    axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=lightning thunder&per_page=24&format=json&nojsoncallback=1`)
+    axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=thunder storm&per_page=24&format=json&nojsoncallback=1`)
       .then(response => {
         this.setState({
           images: response.data.photos.photo
@@ -35,11 +39,13 @@ searchImages = (query) => {
 render() {
   console.log(this.state.images);
   return (
-    <div className="App">
-      <Search searchBar={this.searchImages} />
-      <Navigation searchPut />
-      <PhotoContainer data={this.state.images} />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Search searchBar={this.searchImages} />
+        <Navigation searchPut={this.searchImages} />
+        <PhotoContainer data={this.state.images} />
+      </div>
+    </BrowserRouter>
   );
 }
 
