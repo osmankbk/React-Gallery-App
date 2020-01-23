@@ -12,8 +12,6 @@ import apiKey from './config';
 class App extends Component {
   state = {
     images: [],
-    second: [],
-    third: [],
     result: ''
   }
   componentDidMount() {
@@ -25,9 +23,11 @@ class App extends Component {
       axios.get(url)
     ]);
     promises
-    .then((response) => {
-      Promise.all(response.map(r => {
-      
+    .then( response => {
+      Promise.all(response.map(res => {
+        this.setState({
+          images: res.data.photos.photo
+        });
       }))
     }
 
