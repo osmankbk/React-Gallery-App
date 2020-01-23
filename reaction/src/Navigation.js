@@ -5,9 +5,9 @@ const Navigation = (props) => {
   return(
     <nav className="main-nav">
       <ul>
-        <li><NavLink onClick={ () => props.searchPut('lightning thunder') } to="Lightning">Lightning</NavLink></li>
-        <li><NavLink onClick={  () => props.searchPut('sunsets') } to='Sunsets'>Sunsets</NavLink></li>
-        <li><NavLink onClick={() => props.searchPut('planet explosion') } to="Chaos">Chaos!</NavLink></li>
+        <li><NavLink onClick={ () => props.searchPut('atumn') } to="Atumn">Atumn</NavLink></li>
+        <li><NavLink onClick={  () => props.searchPut('flowers') } to='Flowers'>Flowers</NavLink></li>
+        <li><NavLink onClick={() => props.searchPut('atumn leaves') } to="Leaves">Leaves</NavLink></li>
       </ul>
     </nav>
   );
