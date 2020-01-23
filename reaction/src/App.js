@@ -11,7 +11,8 @@ import apiKey from './config';
 
 class App extends Component {
   state = {
-    images: []
+    images: [],
+    result: ''
   }
   /*componentDidMount() {
     axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=thunder storm&per_page=24&format=json&nojsoncallback=1`)
@@ -28,7 +29,8 @@ searchImages = (query) => {
   axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
     .then(response => {
       this.setState({
-        images: response.data.photos.photo
+        images: response.data.photos.photo,
+        result: query
       });
     })
     .catch(error => {
@@ -37,13 +39,16 @@ searchImages = (query) => {
 }
 
 render() {
-  console.log(this.state.images);
+  console.log(this.state.result);
   return (
     <BrowserRouter>
       <div className="App">
         <Search searchBar={this.searchImages} />
         <Navigation searchPut={this.searchImages} />
-        <PhotoContainer data={this.state.images} />
+        <PhotoContainer
+        data={this.state.images}
+        title={this.state.result}
+         />
       </div>
     </BrowserRouter>
   );
