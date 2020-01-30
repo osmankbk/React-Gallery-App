@@ -22,6 +22,7 @@ class App extends Component {
     this.searchImages('dogs');
     this.searchImagesTwo('atumn');
     this.searchImagesThree('flowers');
+    this.searchImagesFour('leaves');
 
     }
 
