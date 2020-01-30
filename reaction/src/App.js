@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
   BrowserRouter,
-  Route
+  Route,
+  Switch
 } from 'react-router-dom';
 import Search from './Search';
 import Navigation from './Navigation';
@@ -12,33 +13,17 @@ import apiKey from './config';
 class App extends Component {
   state = {
     images: [],
+    imagesTwo: [],
+    imagesThree: [],
+    imagesFour: [],
     result: ''
   }
   componentDidMount() {
-
-  const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=leaves&per_page=1&format=json&nojsoncallback=1`;
-    const promises = Promise.all([
-      axios.get(url),
-      axios.get(url),
-      axios.get(url)
-    ]);
-    promises
-    .then( response => {
-      Promise.all(response.map(res => {
-        this.setState({
-          images: res.data.photos.photo
-        });
-      }))
-    }
-
-      ).catch(error => {
-        console.log('Error fetching and parsing data', error);
-      });
+    this.searchImages('dogs');
+    this.searchImagesTwo('atumn');
+    this.searchImagesThree('flowers');
 
     }
-
-
-
 
 searchImages = (query) => {
   axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
@@ -53,6 +38,44 @@ searchImages = (query) => {
     });
 }
 
+searchImagesTwo = (query) => {
+  axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
+    .then(response => {
+      this.setState({
+        imagesTwo: response.data.photos.photo,
+        result: query
+      });
+    })
+    .catch(error => {
+      console.log('Error fetching and parsing data', error);
+    });
+}
+
+searchImagesThree = (query) => {
+  axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
+    .then(response => {
+      this.setState({
+        imagesThree: response.data.photos.photo,
+        result: query
+      });
+    })
+    .catch(error => {
+      console.log('Error fetching and parsing data', error);
+    });
+}
+
+searchImagesFour = (query) => {
+  axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
+    .then(response => {
+      this.setState({
+        imagesFour: response.data.photos.photo,
+        result: query
+      });
+    })
+    .catch(error => {
+      console.log('Error fetching and parsing data', error);
+    });
+}
 render() {
   console.log(this.state.result);
   return (
@@ -60,10 +83,28 @@ render() {
       <div className="App">
         <Search searchBar={this.searchImages} />
         <Navigation searchPut={this.searchImages} />
-        <PhotoContainer
-        data={this.state.images}
-        title={this.state.result}
-         />
+          <Switch>
+            <Route exact path="/" render={ () => <PhotoContainer
+              data={this.state.images}
+              title={this.state.result}
+               /> } />
+               <Route path="/search" render={ () => <PhotoContainer
+                 data={this.state.images}
+                 title={this.state.result}
+                  /> } />
+             <Route path="/atumn" render={ () => <PhotoContainer
+                data={this.state.imagesTwo}
+                title={this.state.result}
+                  /> } />
+              <Route path="/flowers" render={ () => <PhotoContainer
+                data={this.state.imagesThree}
+                title={this.state.result}
+                  /> } />
+                <Route path="/leaves" render={ () => <PhotoContainer
+                  data={this.state.imagesFour}
+                    title={this.state.result}
+                     /> } />
+          </Switch>
       </div>
     </BrowserRouter>
   );
