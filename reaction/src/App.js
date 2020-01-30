@@ -88,23 +88,23 @@ render() {
             <Route exact path="/" render={ () => <PhotoContainer
               data={this.state.images}
               title={this.state.result}
-               /> } />
-               <Route path="/search" render={ () => <PhotoContainer
-                 data={this.state.images}
-                 title={this.state.result}
-                  /> } />
-             <Route path="/atumn" render={ () => <PhotoContainer
+              /> } />
+              <Route path="/search" render={ () => <PhotoContainer
+                data={this.state.images}
+                title={this.state.result}
+                /> } />
+               <Route path="/atumn" render={ () => <PhotoContainer
                 data={this.state.imagesTwo}
                 title={this.state.result}
-                  /> } />
-              <Route path="/flowers" render={ () => <PhotoContainer
+                /> } />
+               <Route path="/flowers" render={ () => <PhotoContainer
                 data={this.state.imagesThree}
                 title={this.state.result}
-                  /> } />
-                <Route path="/leaves" render={ () => <PhotoContainer
-                  data={this.state.imagesFour}
-                    title={this.state.result}
-                     /> } />
+                /> } />
+               <Route path="/leaves" render={ () => <PhotoContainer
+                data={this.state.imagesFour}
+                title={this.state.result}
+                /> } />
           </Switch>
       </div>
     </BrowserRouter>
