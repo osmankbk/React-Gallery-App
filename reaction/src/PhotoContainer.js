@@ -4,10 +4,11 @@ import Image from './Image';
 
 class PhotoContainer extends Component {
   state = {
-    loading: ''
+      loading: true
   }
 
   render() {
+    const loading = this.props.loading;
     let photos;
     let title = this.props.title;
     const pictures = this.props.data;
@@ -29,7 +30,7 @@ class PhotoContainer extends Component {
       <div className="photo-container">
         <h2>Images Of {title}</h2>
         <ul>
-          { photos }
+          {loading ? <h2>...Loading</h2> : photos }
         </ul>
       </div>
     );

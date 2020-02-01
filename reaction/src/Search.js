@@ -26,7 +26,7 @@ class Search extends Component {
 
   render() {
     return(
-      <form className="search-form" onSubmit={this.searchSubmit}>
+      <form className="search-form" onSubmit={ this.searchSubmit }>
         <input type="search" name="search" onChange={this.searchChange}  placeholder="Search" required/>
         <button type="submit" className="search-button">
           <svg fill="#fff" height="24" viewBox="0 0 23 23" width="24" xmlns="http://www.w3.org/2000/svg">
