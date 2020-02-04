@@ -17,14 +17,13 @@ class Search extends Component {
     const { history } = this.props;
     let text = this.state.searchText;
     this.props.searchBar(text);
-    console.log(this.props.history);
-    console.log(history);
-    //history.push(`/search/${text}`);
+    history.push(`/search/${text}`);
     e.currentTarget.reset();
 
   }
 
   render() {
+    //const loading = this.props.loading;
     return(
       <form className="search-form" onSubmit={ this.searchSubmit }>
         <input type="search" name="search" onChange={this.searchChange}  placeholder="Search" required/>
@@ -39,4 +38,4 @@ class Search extends Component {
   }
 }
 
-export default Search;
+export default withRouter(Search);

@@ -9,6 +9,7 @@ import Navigation from './Navigation';
 import PhotoContainer from './PhotoContainer';
 import axios from 'axios';
 import apiKey from './config';
+import FourOFour from './FourOFour';
 
 class App extends Component {
   state = {
@@ -20,10 +21,11 @@ class App extends Component {
     result: ''
   }
   componentDidMount() {
-    this.searchImages('dogs');
-    this.searchImagesTwo('atumn');
-    this.searchImagesThree('flowers');
     this.searchImagesFour('leaves');
+    this.searchImagesThree('flowers');
+    this.searchImagesTwo('atumn');
+    this.searchImages('dogs');
+
 
     }
 
@@ -86,7 +88,7 @@ render() {
   console.log(this.state.result);
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className="container">
         <Search
           searchBar={this.searchImages} />
         <Navigation
@@ -119,6 +121,7 @@ render() {
                 data={this.state.imagesFour}
                 title={this.state.result}
                 /> } />
+                <Route component={FourOFour}/>
           </Switch>
       </div>
     </BrowserRouter>

@@ -25,10 +25,9 @@ class PhotoContainer extends Component {
             />
       );
     }
-
     return(
       <div className="photo-container">
-        <h2>Images Of {title}</h2>
+        <h2>Images Of {title} </h2>
         <ul>
           {loading ? <h2>...Loading</h2> : photos }
         </ul>
