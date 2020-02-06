@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 
 class Search extends Component {
   state = {
-    searchText: ''
+    searchText: '',
   }
 
   searchChange = (e) => {
@@ -23,7 +23,6 @@ class Search extends Component {
   }
 
   render() {
-    //const loading = this.props.loading;
     return(
       <form className="search-form" onSubmit={ this.searchSubmit }>
         <input type="search" name="search" onChange={this.searchChange}  placeholder="Search" required/>

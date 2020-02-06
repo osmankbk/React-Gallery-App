@@ -30,6 +30,9 @@ class App extends Component {
     }
 
 searchImages = (query) => {
+  this.setState({
+    loading: true
+  })
   axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
     .then(response => {
       this.setState({
@@ -90,7 +93,8 @@ render() {
     <BrowserRouter>
       <div className="container">
         <Search
-          searchBar={this.searchImages} />
+        searchBar={this.searchImages}
+           />
         <Navigation
           loading={this.state.loading}
           searchPut={this.searchImages}

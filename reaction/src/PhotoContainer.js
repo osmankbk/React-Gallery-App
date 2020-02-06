@@ -3,9 +3,7 @@ import NotFound from './NotFound';
 import Image from './Image';
 
 class PhotoContainer extends Component {
-  state = {
-      loading: true
-  }
+
 
   render() {
     const loading = this.props.loading;
