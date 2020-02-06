@@ -88,7 +88,6 @@ searchImagesFour = (query) => {
     });
 }
 render() {
-  console.log(this.state.result);
   return (
     <BrowserRouter>
       <div className="container">
