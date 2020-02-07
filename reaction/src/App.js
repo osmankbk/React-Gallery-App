@@ -1,3 +1,11 @@
+/* Treehouse FSJS Techdegree
+ * Project 7 - React Gallery App
+ * App.js
+  Goal: Exceed Expectation
+  */
+
+
+//Imported the necessary files and component to put my app together
 import React, { Component } from 'react';
 import {
   BrowserRouter,
@@ -20,6 +28,7 @@ class App extends Component {
     loading: true,
     result: ''
   }
+  //I request and load the home and default topics when the page first loads, i don't have to reload new data each time
   componentDidMount() {
     this.searchImagesFour('leaves');
     this.searchImagesThree('flowers');
@@ -45,7 +54,7 @@ searchImages = (query) => {
       console.log('Error fetching and parsing data', error);
     });
 }
-
+//My function API request functions
 searchImagesTwo = (query) => {
   axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
     .then(response => {
