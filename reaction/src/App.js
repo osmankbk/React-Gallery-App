@@ -93,12 +93,6 @@ searchImagesFour = (query) => {
       console.log('Error fetching and parsing data', error);
     });
 }
-
-changeResult = (text) => {
-  this.setState({
-    result: text
-  });
-}
 render() {
   return (
     <BrowserRouter>
