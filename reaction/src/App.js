@@ -108,7 +108,6 @@ render() {
            />
         <Navigation
           searchPut={this.searchImages}
-          results={this.changeResult}
           />
           <Switch>
             <Route exact path="/" render={ () => <PhotoContainer
@@ -123,15 +122,15 @@ render() {
                 /> } />
                <Route path="/atumn" render={ () => <PhotoContainer
                 data={this.state.atumn}
-                title={this.state.result}
+                title={'Atumn'}
                 /> } />
                <Route path="/flowers" render={ () => <PhotoContainer
                 data={this.state.flowers}
-                title={this.state.result}
+                title={'Flowers'}
                 /> } />
                <Route path="/leaves" render={ () => <PhotoContainer
                 data={this.state.leaves}
-                title={this.state.result}
+                title={'Leaves'}
                 /> } />
                 <Route component={FourOFour}/>
           </Switch>
