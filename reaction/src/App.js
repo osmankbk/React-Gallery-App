@@ -22,9 +22,9 @@ import FourOFour from './FourOFour';
 class App extends Component {
   state = {
     images: [],
-    imagesTwo: [],
-    imagesThree: [],
-    imagesFour: [],
+    Atumn: [],
+    flowers: [],
+    leaves: [],
     loading: true,
     result: ''
   }
@@ -60,8 +60,7 @@ searchImagesTwo = (query) => {
     .then(response => {
       this.setState({
         loading: false,
-        imagesTwo: response.data.photos.photo,
-        result: query
+        atumn: response.data.photos.photo,
       });
     })
     .catch(error => {
@@ -74,8 +73,7 @@ searchImagesThree = (query) => {
     .then(response => {
       this.setState({
         loading: false,
-        imagesThree: response.data.photos.photo,
-        result: query
+        flowers: response.data.photos.photo,
       });
     })
     .catch(error => {
@@ -88,13 +86,18 @@ searchImagesFour = (query) => {
     .then(response => {
       this.setState({
         loading: false,
-        imagesFour: response.data.photos.photo,
-        result: query
+        leaves: response.data.photos.photo,
       });
     })
     .catch(error => {
       console.log('Error fetching and parsing data', error);
     });
+}
+
+changeResult = (text) => {
+  this.setState({
+    result: text
+  });
 }
 render() {
   return (
@@ -104,8 +107,8 @@ render() {
         searchBar={this.searchImages}
            />
         <Navigation
-          loading={this.state.loading}
           searchPut={this.searchImages}
+          results={this.changeResult}
           />
           <Switch>
             <Route exact path="/" render={ () => <PhotoContainer
@@ -119,18 +122,15 @@ render() {
                 title={this.state.result}
                 /> } />
                <Route path="/atumn" render={ () => <PhotoContainer
-                 loading={this.state.loading}
-                data={this.state.imagesTwo}
+                data={this.state.atumn}
                 title={this.state.result}
                 /> } />
                <Route path="/flowers" render={ () => <PhotoContainer
-                 loading={this.state.loading}
-                data={this.state.imagesThree}
+                data={this.state.flowers}
                 title={this.state.result}
                 /> } />
                <Route path="/leaves" render={ () => <PhotoContainer
-                 loading={this.state.loading}
-                data={this.state.imagesFour}
+                data={this.state.leaves}
                 title={this.state.result}
                 /> } />
                 <Route component={FourOFour}/>
