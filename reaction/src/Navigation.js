@@ -8,9 +8,9 @@ class Navigation extends Component {
   return(
     <nav className="main-nav">
       <ul>
-        <li><NavLink  to="/Atumn">Atumn</NavLink></li>
+        <li><NavLink  to="/Cats">Cats</NavLink></li>
         <li><NavLink  to='/Flowers'>Flowers</NavLink></li>
-        <li><NavLink  to="/Leaves">Leaves</NavLink></li>
+        <li><NavLink  to="/Atumn">Atumn</NavLink></li>
       </ul>
     </nav>
   );

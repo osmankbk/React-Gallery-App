@@ -22,9 +22,9 @@ import FourOFour from './FourOFour';
 class App extends Component {
   state = {
     images: [],
-    Atumn: [],
+    cats: [],
     flowers: [],
-    leaves: [],
+    atumn: [],
     loading: true,
     result: ''
   }
@@ -32,7 +32,7 @@ class App extends Component {
   componentDidMount() {
     this.searchImagesFour('leaves');
     this.searchImagesThree('flowers');
-    this.searchImagesTwo('atumn');
+    this.searchImagesTwo('cats');
     this.searchImages('dogs');
 
 
@@ -60,7 +60,7 @@ searchImagesTwo = (query) => {
     .then(response => {
       this.setState({
         loading: false,
-        atumn: response.data.photos.photo,
+        cats: response.data.photos.photo,
       });
     })
     .catch(error => {
@@ -86,7 +86,7 @@ searchImagesFour = (query) => {
     .then(response => {
       this.setState({
         loading: false,
-        leaves: response.data.photos.photo,
+        atumn: response.data.photos.photo,
       });
     })
     .catch(error => {
@@ -120,17 +120,17 @@ render() {
                 data={this.state.images}
                 title={this.state.result}
                 /> } />
-               <Route path="/atumn" render={ () => <PhotoContainer
-                data={this.state.atumn}
-                title={'Atumn'}
+               <Route path="/cats" render={ () => <PhotoContainer
+                data={this.state.cats}
+                title={'Cats'}
                 /> } />
                <Route path="/flowers" render={ () => <PhotoContainer
                 data={this.state.flowers}
                 title={'Flowers'}
                 /> } />
-               <Route path="/leaves" render={ () => <PhotoContainer
-                data={this.state.leaves}
-                title={'Leaves'}
+               <Route path="/atumn" render={ () => <PhotoContainer
+                data={this.state.atumn}
+                title={'Atumn'}
                 /> } />
                 <Route component={FourOFour}/>
           </Switch>
